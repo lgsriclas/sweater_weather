@@ -24,3 +24,6 @@
 
 # Ignore simplcov during development
 /coverage
+
+# Ignore application configuration
+/config/application.yml
