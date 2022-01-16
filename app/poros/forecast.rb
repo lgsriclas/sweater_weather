@@ -3,40 +3,73 @@ class Forecast
 
   def initialize(data)
     @id = nil
-    @cw = current_weather(data[:current_weather])
-    @hw = hourly_weather(data[:hourly_weather])
-    @dw = daily_weather(data[:daily_weather])
+    @current_weather = current(data)
+    @hourly_weather = hourly(data)
+    @daily_weather = daily(data)
+    # @current_weather =
+    #   {
+    #     datetime: Time.at(data[:current][:dt]),
+    #     sunrise: Time.at(data[:current][:sunrise]),
+    #     sunset: Time.at(data[:current][:sunset]),
+    #     temperature: data[:current][:temp],
+    #     feels_like: data[:current][:feels_like],
+    #     humidity: data[:current][:humidity],
+    #     uvi: data[:current][:uvi],
+    #     visibility: data[:current][:visibility],
+    #     conditions: data[:current][:weather].first[:main],
+    #     icon: data[:current][:weather].first[:icon]
+    #   }
+    # @hourly_weather =
+    #   data[:hourly][0..7].map do |time|
+    #     {
+    #       day: Time.at(time[:dt]).strftime('%F'),
+    #       temperature: time[:temp],
+    #       conditions: time[:weather].first[:main],
+    #       icon: time[:weather].first[:icon],
+    #     }
+    #   end
+    # @daily_weather =
+    #   data[:daily][0..4].map do |date|
+    #     {
+    #       time: Time.at(date[:dt]).strftime('%F'),
+    #       min: date[:temp][:min],
+    #       max: date[:temp][:max],
+    #       icon: date[:weather].first[:icon],
+    #       rain: date[:rain]
+    #     }
+    #   end
   end
 
-  def current_weather(data)
+  def current(data)
     {
-      datetime: Time.at(data[:dt]),
-      sunrise: Time.at(data[:sunrise]),
-      sunset: Time.at(data[:sunset]),
-      temperature: data[:temp],
-      feels_like: data[:feels_like],
-      humidity: data[:humidity],
-      uvi: data[:uvi],
-      visibility: data[:visibility],
-      weather: data[:weather].first[:main],
-      icon: data[:weather].first[:icon]
+      datetime: Time.at(data[:current][:dt]),
+      sunrise: Time.at(data[:current][:sunrise]),
+      sunset: Time.at(data[:current][:sunset]),
+      temperature: data[:current][:temp],
+      feels_like: data[:current][:feels_like],
+      humidity: data[:current][:humidity],
+      uvi: data[:current][:uvi],
+      visibility: data[:current][:visibility],
+      conditions: data[:current][:weather].first[:main],
+      icon: data[:current][:weather].first[:icon]
     }
   end
 
-  def hourly_weather(data)
-    data.map do |date|
+  def hourly(data)
+    data[:hourly][0..7].map do |time|
       {
-        time: Time.at(date[:dt]).strftime('%T'),
-        temperature: date[:temp],
-        icon: date[:weather].first[:icon]
+        day: Time.at(time[:dt]).strftime('%F'),
+        temperature: time[:temp],
+        conditions: time[:weather].first[:main],
+        icon: time[:weather].first[:icon],
       }
     end
   end
 
-  def daily_weather(data)
-    data.map do |date|
+  def daily(data)
+    data[:daily][0..4].map do |date|
       {
-        day: Time.at(date[:dt]).strftime('%F'),
+        time: Time.at(date[:dt]).strftime('%F'),
         min: date[:temp][:min],
         max: date[:temp][:max],
         icon: date[:weather].first[:icon],
