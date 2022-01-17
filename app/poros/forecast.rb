@@ -6,45 +6,13 @@ class Forecast
     @current_weather = current(data)
     @hourly_weather = hourly(data)
     @daily_weather = daily(data)
-    # @current_weather =
-    #   {
-    #     datetime: Time.at(data[:current][:dt]),
-    #     sunrise: Time.at(data[:current][:sunrise]),
-    #     sunset: Time.at(data[:current][:sunset]),
-    #     temperature: data[:current][:temp],
-    #     feels_like: data[:current][:feels_like],
-    #     humidity: data[:current][:humidity],
-    #     uvi: data[:current][:uvi],
-    #     visibility: data[:current][:visibility],
-    #     conditions: data[:current][:weather].first[:main],
-    #     icon: data[:current][:weather].first[:icon]
-    #   }
-    # @hourly_weather =
-    #   data[:hourly][0..7].map do |time|
-    #     {
-    #       day: Time.at(time[:dt]).strftime('%F'),
-    #       temperature: time[:temp],
-    #       conditions: time[:weather].first[:main],
-    #       icon: time[:weather].first[:icon],
-    #     }
-    #   end
-    # @daily_weather =
-    #   data[:daily][0..4].map do |date|
-    #     {
-    #       time: Time.at(date[:dt]).strftime('%F'),
-    #       min: date[:temp][:min],
-    #       max: date[:temp][:max],
-    #       icon: date[:weather].first[:icon],
-    #       rain: date[:rain]
-    #     }
-    #   end
   end
 
   def current(data)
     {
-      datetime: Time.at(data[:current][:dt]),
-      sunrise: Time.at(data[:current][:sunrise]),
-      sunset: Time.at(data[:current][:sunset]),
+      datetime: Time.at(data[:current][:dt]).strftime('%Y-%m-%d %H:%M'),
+      sunrise: Time.at(data[:current][:sunrise]).strftime('%H:%M'),
+      sunset: Time.at(data[:current][:sunset]).strftime('%H:%M'),
       temperature: data[:current][:temp],
       feels_like: data[:current][:feels_like],
       humidity: data[:current][:humidity],
@@ -58,9 +26,9 @@ class Forecast
   def hourly(data)
     data[:hourly][0..7].map do |time|
       {
-        day: Time.at(time[:dt]).strftime('%F'),
+        hour: Time.at(time[:dt]).strftime('%H'),
         temperature: time[:temp],
-        conditions: time[:weather].first[:main],
+        conditions: time[:weather].first[:description],
         icon: time[:weather].first[:icon],
       }
     end
@@ -69,11 +37,13 @@ class Forecast
   def daily(data)
     data[:daily][0..4].map do |date|
       {
-        time: Time.at(date[:dt]).strftime('%F'),
+        day: Time.at(date[:dt]).strftime('%Y-%m-%d'),
+        sunrise: Time.at(date[:sunrise]).strftime('%H:%M'),
+        sunset: Time.at(date[:sunset]).strftime('%H:%M'),
         min: date[:temp][:min],
         max: date[:temp][:max],
+        conditions: date[:weather].first[:description],
         icon: date[:weather].first[:icon],
-        rain: date[:rain]
       }
     end
   end
