@@ -1,6 +1,6 @@
 class BooksearchService
   class << self
-    def get_books(location)
+    def get_books(location, quantity)
       response = Faraday.get("http://openlibrary.org/search.json?q=#{location}&quantity=#{quantity}")
       parse_data(response)
     end

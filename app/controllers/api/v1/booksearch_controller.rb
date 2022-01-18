@@ -1,6 +1,9 @@
 class Api::V1::BooksearchController < ApplicationController
   def index
-    # image = BackgroundFacade.image(params[:location])
-    # render json: BackgroundSerializer.new(image)
+    # location = MapFacade.coordinates(params[:location])
+    # forecast = WeatherFacade.weather_forecast(location[:lat], location[:lng])
+    # forecast = WeatherFacade.weather_forecast(params[:destination])
+    books = BooksearchFacade.books(params[:location], params[:quantity].to_i)
+    render json: BooksearchSerializer.new(books)
   end
 end

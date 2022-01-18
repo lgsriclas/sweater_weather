@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Book Search', :vcr do
+RSpec.describe 'Book Search API', :vcr do
   it 'returns books based on search parameters' do
     get '/api/v1/book-search?location=hoboken,nj&quantity=5',
     headers: {

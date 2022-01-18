@@ -5,20 +5,20 @@ class Booksearch
     @id = nil
     @destination = location
     @forecast = get_forecast(weather)
-    @book = book_search(book)
+    @books = book_search(books, quantity.to_i)
   end
 
   def get_forecast(weather)
     {
-      summary: data[:current][:weather].first[:description],
-      temperature: data[:current][:temp]
+      summary: weather[:current][:weather].first[:description],
+      temperature: weather[:current][:temp]
     }
   end
 
-  def book_search(book)
+  def book_search(books, quantity)
     {
-      total_books_found: data[:num_found],
-      books: data[:docs].limit(5)
+      total_books_found: books[:num_found],
+      books: books[:docs]
     }
   end
 end
