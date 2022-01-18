@@ -8,5 +8,12 @@ RSpec.describe 'Book Search', :vcr do
       'Accept': 'application/json'
     }
 
+    expect(response).to be_successful
+    expect(response.status).to eq(204)
+
+    book = JSON.parse(response.body, symbolize_names: true)
+
+    expect(book).to be_a(Hash)
+    expect(book).to have_key(:data)
   end
 end
