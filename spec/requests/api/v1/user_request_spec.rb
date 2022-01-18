@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'Users API' do
+RSpec.describe 'Users API', :vcr do
   it 'returns user data' do
     user_data =
       {
