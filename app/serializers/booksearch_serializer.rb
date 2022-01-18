@@ -1,4 +1,4 @@
-class BookSearchSerializer
+class BooksearchSerializer
   include JSONAPI::Serializer
 
   set_type :book

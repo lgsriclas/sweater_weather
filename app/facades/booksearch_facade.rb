@@ -1,11 +1,11 @@
 class BooksearchFacade
   class << self
-    def books(location, quantity)
+    def books(location, quantity = '5')
       # forecast = WeatherFacade.weather_forecast(location[:lat], location[:lng])
       # weather = {summary: forecast[:conditions], temperature: forecast[:temperature].to_i}
-      location = MapFacade.coordinates(params[:location])
       books = BooksearchService.get_books(location, quantity)
-      weather = WeatherFacade.weather_forecast(location[:latLng][:lat], location[:latLng][:lng])
+      location = MapFacade.coordinates(location)
+      weather = WeatherFacade.weather_forecast(location[:lat], location[:lng])
       Booksearch.new(location, weather, books)
     end
   end

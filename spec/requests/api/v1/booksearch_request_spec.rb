@@ -2,14 +2,14 @@ require 'rails_helper'
 
 RSpec.describe 'Book Search API', :vcr do
   it 'returns books based on search parameters' do
-    get '/api/v1/book-search?location=hoboken,nj&quantity=5',
+    get '/api/v1/book-search?location=hoboken,nj&limit=5',
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     }
 
     expect(response).to be_successful
-    expect(response.status).to eq(204)
+    expect(response.status).to eq(200)
 
     book = JSON.parse(response.body, symbolize_names: true)
 

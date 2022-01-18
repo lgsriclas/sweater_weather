@@ -1,24 +1,28 @@
 class Booksearch
-  attr_reader :id, :destination, :forecast, :book
+  attr_reader :id, :destination, :forecast, :total_books_found, :books
 
-  def initialize(location, weather, books)
+  def initialize(destination, forecast, books)
     @id = nil
-    @destination = location
-    @forecast = get_forecast(weather)
-    @books = book_search(books, quantity.to_i)
+    @destination = destination
+    @forecast = get_forecast(forecast)
+    @total_books_found = books[:num_found]
+    @books = book_search(books[:docs])
   end
 
-  def get_forecast(weather)
+  def get_forecast(forecast)
     {
-      summary: weather[:current][:weather].first[:description],
-      temperature: weather[:current][:temp]
+      summary: forecast.current_weather[:conditions],
+      temperature: forecast.current_weather[:temperature].to_s + ' F'
     }
   end
 
-  def book_search(books, quantity)
-    {
-      total_books_found: books[:num_found],
-      books: books[:docs]
-    }
+  def book_search(books)
+    books.map do |book|
+      {
+        isbn: book[:isbn],
+        title: book[:title],
+        publisher: book[:publisher]
+      }
+    end
   end
 end
