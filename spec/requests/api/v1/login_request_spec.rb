@@ -39,7 +39,7 @@ RSpec.describe 'User Login', :vcr do
         password: 'ilovesnoopy',
       }
 
-    post '/api/v1/users', params: user_data.to_json,
+    post '/api/v1/sessions', params: user_data.to_json,
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
