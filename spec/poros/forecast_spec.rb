@@ -17,6 +17,9 @@ RSpec.describe 'Forecast', :vcr do
     expect(current.current_weather).to have_key(:visibility)
     expect(current.current_weather).to have_key(:conditions)
     expect(current.current_weather).to have_key(:icon)
+    expect(current.current_weather).to_not have_key(:clouds)
+    expect(current.current_weather).to_not have_key(:wind_speed)
+
   end
 
   it 'returns hourly weather forecast' do
@@ -29,6 +32,8 @@ RSpec.describe 'Forecast', :vcr do
     expect(current.hourly_weather.first).to have_key(:temperature)
     expect(current.hourly_weather.first).to have_key(:conditions)
     expect(current.hourly_weather.first).to have_key(:icon)
+    expect(current.hourly_weather.first).to_not have_key(:clouds)
+    expect(current.hourly_weather.first).to_not have_key(:dew_point)
   end
 
   it 'returns daily weather forecast' do
@@ -44,5 +49,7 @@ RSpec.describe 'Forecast', :vcr do
     expect(current.daily_weather.first).to have_key(:max)
     expect(current.daily_weather.first).to have_key(:conditions)
     expect(current.daily_weather.first).to have_key(:icon)
+    expect(current.daily_weather.first).to_not have_key(:clouds)
+    expect(current.daily_weather.first).to_not have_key(:wind_speed)
   end
 end
