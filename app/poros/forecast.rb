@@ -18,7 +18,7 @@ class Forecast
       humidity: data[:current][:humidity],
       uvi: data[:current][:uvi],
       visibility: data[:current][:visibility],
-      conditions: data[:current][:weather].first[:main],
+      conditions: data[:current][:weather].first[:description],
       icon: data[:current][:weather].first[:icon]
     }
   end
