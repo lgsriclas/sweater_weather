@@ -6,7 +6,7 @@ class MapService
     end
 
     def get_travel_time(origin, destination)
-      response = Faraday.get("http://www.mapquestapi.com/geocoding/v1/address?key=#{ENV['mapquest_api_key']}&origin=#{location}&destination=#{destination}")
+      response = Faraday.get("http://www.mapquestapi.com/directions/v2/route?key=#{ENV['mapquest_api_key']}&from=#{origin}&to=#{destination}")
       parse_data(response)
     end
     private
