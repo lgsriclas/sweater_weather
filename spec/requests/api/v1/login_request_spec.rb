@@ -29,4 +29,25 @@ RSpec.describe 'User Login', :vcr do
     expect(user[:data][:attributes]).to_not have_key(:password)
     expect(user[:data][:attributes]).to_not have_key(:password_digest)
   end
+
+  it 'returns an error code if registration is unsuccessful' do
+    User.create(email: 'sally@peanuts.com', password: 'ilovelinus', password_confirmation: 'ilovelinus')
+
+    user_data =
+      {
+        email: 'sally@peanuts.com',
+        password: 'ilovesnoopy',
+      }
+
+    post '/api/v1/users', params: user_data.to_json,
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+
+    data = JSON.parse(response.body, symbolize_names: true)[:errors]
+
+    expect(response.status).to eq(400)
+    expect(data[:details]).to eq('There was an error completing this request.')
+  end
 end
