@@ -8,7 +8,6 @@ class Background
 
   def background_image(data)
     {
-      # location: data[:location],
       image_url: data[:photos].first[:url],
       credit:
         {
