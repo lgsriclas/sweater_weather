@@ -6,6 +6,19 @@ class RoadTripFacade
       coordinates = MapFacade.coordinates(destination)
       forecast = WeatherFacade.weather_forecast(coordinates[:lat], coordinates[:lng])
       future_forecast = forecast.hourly_weather[time_to_destination]
+
+      road_trip =
+        {
+          origin: origin,
+          destination: destination,
+          travel_time: time_to_destination,
+          weather_at_eta: {
+            temperature: future_forecast[:temperature],
+            conditions: future_forecast[:conditions]
+          }
+        }
+
+      RoadTrip.new(road_trip)
     end
   end
 end

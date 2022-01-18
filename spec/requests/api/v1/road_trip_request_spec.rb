@@ -18,10 +18,19 @@ RSpec.describe 'Road Trip', :vcr do
     }
 
     expect(response).to be_successful
-    expect(response.status).to eq(204)
+    expect(response.status).to eq(200)
 
-    # trip = JSON.parse(response.body, symbolize_names: true)
-    #
-    # expect(trip).to be_a(Hash)
+    trip = JSON.parse(response.body, symbolize_names: true)
+
+    expect(trip).to be_a(Hash)
+    expect(trip).to have_key(:data)
+    expect(trip[:data]).to have_key(:attributes)
+    expect(trip[:data][:attributes]).to have_key(:start_city)
+    expect(trip[:data][:attributes][:start_city]).to eq("Hoboken, NJ")
+    expect(trip[:data][:attributes]).to have_key(:end_city)
+    expect(trip[:data][:attributes][:end_city]).to eq("Lake Placid, NY")
+    expect(trip[:data][:attributes]).to have_key(:travel_time)
+    expect(trip[:data][:attributes][:weather_at_eta]).to have_key(:temperature)
+    expect(trip[:data][:attributes][:weather_at_eta]).to have_key(:conditions)
   end
 end
