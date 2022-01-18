@@ -1,0 +1,13 @@
+class BooksearchService
+  class << self
+    def get_books(location)
+      response = Faraday.get("http://openlibrary.org/search.json?q=#{location}&quantity=#{quantity}")
+      parse_data(response)
+    end
+
+    private
+    def parse_data(response)
+      JSON.parse(response.body, symbolize_names: true)
+    end
+  end
+end
