@@ -18,8 +18,11 @@ RSpec.describe 'Road Trip', :vcr do
     }
 
     expect(response).to be_successful
-    expect(response.status).to eq(201)
+    expect(response.status).to eq(204)
+    require "pry"; binding.pry
 
     trip = JSON.parse(response.body, symbolize_names: true)
+
+    expect(trip).to be_a(Hash)
   end
 end
