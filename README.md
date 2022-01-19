@@ -2,7 +2,7 @@
 
 ## Background and Description
 
-Sweater weather is a Rails application that allows users to see current and future weather forecasts and plan road trips.  It was developed as a project at Turing School of Software and Design.  
+Sweater weather is a backend Rails application that allows users to see current and future weather forecasts and plan road trips.  It was developed as a project at Turing School of Software and Design.  
 
 ## APIs
 
