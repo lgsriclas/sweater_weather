@@ -33,4 +33,27 @@ RSpec.describe 'Road Trip', :vcr do
     expect(trip[:data][:attributes][:weather_at_eta]).to have_key(:temperature)
     expect(trip[:data][:attributes][:weather_at_eta]).to have_key(:conditions)
   end
+
+  it 'sends an error code if API key is invalid' do
+    user = User.create(email: 'sally@peanuts.com', password: 'ilovelinus', password_confirmation: 'ilovelinus')
+
+    trip_data =
+      {
+        origin: "Hoboken, NJ",
+        destination: "Lake Placid, NY",
+        api_key: ""
+      }
+
+    post '/api/v1/road_trip', params: trip_data.to_json,
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
+    }
+
+    data = JSON.parse(response.body, symbolize_names: true)[:errors]
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(401)
+    expect(data[:details]).to eq('Your API key is incorrect')
+  end
 end

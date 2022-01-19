@@ -9,7 +9,7 @@ class RoadTrip
     @id = nil
     @start_city = data[:origin]
     @end_city = data[:destination]
-    @travel_time = Time.at(data[:travel_time]).strftime('%H hours,%M minutes')
+    @travel_time = data[:travel_time].to_s + " Hours"
     @weather_at_eta = data[:weather_at_eta]
   end
 end

@@ -13,7 +13,7 @@ class RoadTripFacade
           destination: destination,
           travel_time: time_to_destination,
           weather_at_eta: {
-            temperature: future_forecast[:temperature],
+            temperature: future_forecast[:temperature].to_s + " F",
             conditions: future_forecast[:conditions]
           }
         }
