@@ -7,7 +7,7 @@ class BreweryFacade
       # end
       location = MapFacade.coordinates(location)
       forecast = WeatherFacade.weather_forecast(location[:lat], location[:lng])
-      x = Brewery.new(location, forecast, breweries)
+      Brewery.new(location, forecast, breweries)
     end
   end
 end
