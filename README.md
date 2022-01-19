@@ -34,13 +34,13 @@ This application utilizes an internal "users" API as well as three external APIs
 
     POST '/api/v1/users'
 
-      * Params :email, :password, and :password_confirmation must be passed in body of request as  JSON.
+    * Params :email, :password, and :password_confirmation must be passed in body of request as  JSON.
 
 * **Log in Existing User**
 
     POST '/api/v1/sessions'
 
-      * Params :email and :password must be passed in body of request as JSON.
+    * Params :email and :password must be passed in body of request as JSON.
 
 ## Setup and Testing
 
