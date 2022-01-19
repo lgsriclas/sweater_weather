@@ -25,9 +25,7 @@ RSpec.describe 'Breweries', :vcr do
   it 'returns location data' do
      breweries = BreweryFacade.breweries("Denver, CO", 5)
 
-     expect(breweries.destination).to be_a(Hash)
-     expect(breweries.destination).to have_key(:lat)
-     expect(breweries.destination).to have_key(:lng)
+     expect(breweries.destination).to eq("Denver, CO")
   end
 
 end

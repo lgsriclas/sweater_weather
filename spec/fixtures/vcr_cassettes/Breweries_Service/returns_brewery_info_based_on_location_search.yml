@@ -35,7 +35,7 @@ http_interactions:
       Referrer-Policy:
       - strict-origin-when-cross-origin
       Date:
-      - Wed, 19 Jan 2022 16:52:24 GMT
+      - Wed, 19 Jan 2022 17:50:45 GMT
       Content-Type:
       - application/json; charset=utf-8
       Vary:
@@ -45,9 +45,9 @@ http_interactions:
       Etag:
       - W/"6c1d6cf181695ff918e72ef587b96cca"
       X-Request-Id:
-      - ea23dda6-a55f-4fc7-b38e-249282f1c51c
+      - e59097b9-870d-4b8f-8315-ebd6b0faf14c
       X-Runtime:
-      - '0.036961'
+      - '0.093383'
       Strict-Transport-Security:
       - max-age=63072000; includeSubDomains
       Transfer-Encoding:
@@ -68,5 +68,5 @@ http_interactions:
         Beer Co Olde Town Arvada","brewery_type":"micro","street":"5768 Olde Wadsworth
         Blvd","address_2":null,"address_3":null,"city":"Arvada","state":"Colorado","county_province":null,"postal_code":"80002-2549","country":"United
         States","longitude":"-105.0814554","latitude":"39.801625","phone":null,"website_url":null,"updated_at":"2021-10-23T02:24:55.243Z","created_at":"2021-10-23T02:24:55.243Z"}]'
-  recorded_at: Wed, 19 Jan 2022 16:52:24 GMT
+  recorded_at: Wed, 19 Jan 2022 17:50:45 GMT
 recorded_with: VCR 6.0.0
