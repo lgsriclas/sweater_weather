@@ -1,4 +1,4 @@
-class BrewerySerializer
+class BreweriesSerializer
   include JSONAPI::Serializer
 
   set_type :brewery

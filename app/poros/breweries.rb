@@ -1,4 +1,4 @@
-class Brewery
+class Breweries
   attr_reader :id,
               :destination,
               :forecast,

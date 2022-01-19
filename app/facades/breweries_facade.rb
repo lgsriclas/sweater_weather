@@ -1,10 +1,10 @@
-class BreweryFacade
+class BreweriesFacade
   class << self
     def breweries(location, quantity)
-      breweries = BreweryService.get_breweries(location, quantity)
+      breweries = BreweriesService.get_breweries(location, quantity)
       coordinates = MapFacade.coordinates(location)
       forecast = WeatherFacade.weather_forecast(coordinates[:lat], coordinates[:lng])
-      Brewery.new(location, forecast, breweries)
+      Breweries.new(location, forecast, breweries)
     end
   end
 end
