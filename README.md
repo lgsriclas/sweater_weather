@@ -25,20 +25,22 @@ This application utilizes an internal "users" API as well as three external APIs
     (http://localhost:3000/api/v1/road_trip)
 
 * **Background Image**
-    * [Pexels](https://www.pexels.com/api)
+    [Pexels](https://www.pexels.com/api)
 
-    * GET '/api/v1/backgrounds'
+    GET '/api/v1/backgrounds'
     (http://localhost:3000/api/v1/backgrounds?location=hoboken,nj)
 
 * **Create User**
-    * POST '/api/v1/users'
 
-    * Params :email, :password, and :password_confirmation must be passed in body of request as  JSON.
+    POST '/api/v1/users'
+
+      * Params :email, :password, and :password_confirmation must be passed in body of request as  JSON.
 
 * **Log in Existing User**
+
     POST '/api/v1/sessions'
 
-    Params :email and :password must be passed in body of request as JSON.
+      * Params :email and :password must be passed in body of request as JSON.
 
 ## Setup and Testing
 
