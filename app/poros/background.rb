@@ -14,9 +14,7 @@ class Background
           source: 'pexels.com',
           photographer: data[:photos].first[:photographer],
           photographer_url: data[:photos].first[:photographer_url]
-
         }
     }
-
   end
 end

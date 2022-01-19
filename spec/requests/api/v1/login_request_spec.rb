@@ -48,6 +48,6 @@ RSpec.describe 'User Login', :vcr do
     data = JSON.parse(response.body, symbolize_names: true)[:errors]
 
     expect(response.status).to eq(400)
-    expect(data[:details]).to eq('There was an error completing this request.')
+    expect(data[:details]).to eq('There was an error processing your request. Your credentials are invalid.')
   end
 end

@@ -35,7 +35,7 @@ RSpec.describe 'Road Trip', :vcr do
   end
 
   it 'sends an error code if API key is invalid' do
-    user = User.create(email: 'sally@peanuts.com', password: 'ilovelinus', password_confirmation: 'ilovelinus')
+    User.create(email: 'sally@peanuts.com', password: 'ilovelinus', password_confirmation: 'ilovelinus')
 
     trip_data =
       {
