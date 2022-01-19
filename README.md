@@ -9,36 +9,33 @@ Sweater weather is a Rails application that allows users to see current and futu
 This application utilizes an internal "users" API as well as three external APIs. Please note that the external API keys need to be requested and added to the application.yml. You can access data through the following API calls:
 
 
-- Weather Forecast
-
+- **Weather Forecast**
     [OpenWeather OneCall](https://openweathermap.org/api)
 
     GET '/api/v1/forecast'
     (http://localhost:3000/api/v1/forecast?location=hoboken,nj)
 
-- Roadtrip
-
+- **Roadtrip**
     [Mapquest Developer](https://developer.mapquest.com/)
 
     POST '/api/v1/road_trip'
     Params :location and :api_key must be passed in body of request as JSON.
     (http://localhost:3000/api/v1/road_trip)
 
-- Background Image
-
+- **Background Image**
     [Pexels](https://www.pexels.com/api)
 
     GET '/api/v1/backgrounds'
     (http://localhost:3000/api/v1/backgrounds?location=hoboken,nj)
 
-- Create User
-
+- **Create User**
     POST '/api/v1/users'
+
     Params :email, :password, and :password_confirmation must be passed in body of request as JSON.
 
-- Log in Existing User
-
+- **Log in Existing User**
     POST '/api/v1/sessions'
+    
     Params :email and :password must be passed in body of request as JSON.
 
 ## Setup and Testing
