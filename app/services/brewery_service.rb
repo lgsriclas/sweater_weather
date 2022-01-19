@@ -1,7 +1,7 @@
-class MapService
+class BreweryService
   class << self
     def get_breweries(location, quantity)
-      response = Faraday.get("https://api.openbrewerydb.org/breweries/search?#{location}&limit=#{quantity}")
+      response = Faraday.get("https://api.openbrewerydb.org/breweries/search?query=#{location}&limit=#{quantity}")
       parse_data(response)
     end
 

@@ -8,7 +8,7 @@ class Brewery
     @id = nil
     @destination = destination
     @forecast = get_forecast(forecast)
-    @breweries = brewery_search(breweries[:data])
+    @breweries = brewery_search(breweries)
   end
 
   def get_forecast(forecast)
@@ -25,6 +25,6 @@ class Brewery
         name: brewery[:name],
         brewery_type: brewery[:brewery_type]
       }
-    end 
+    end
   end
 end
