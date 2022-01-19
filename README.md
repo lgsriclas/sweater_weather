@@ -1,24 +1,59 @@
-# README
+# Sweater Weather
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Background and Description
 
-Things you may want to cover:
+Sweater weather is a backend Rails application that allows users to see current and future weather forecasts and plan road trips.  It was developed as a project at Turing School of Software and Design.  
 
-* Ruby version
+## APIs
 
-* System dependencies
+This application utilizes an internal "users" API as well as three external APIs. Please note that the external API keys need to be requested and added to the application.yml. You can access data through the following API calls:
 
-* Configuration
 
-* Database creation
+### Weather Forecast
+  [OpenWeather OneCall](https://openweathermap.org/api)
 
-* Database initialization
+  GET '/api/v1/forecast'
+  (http://localhost:3000/api/v1/forecast?location=hoboken,nj)
 
-* How to run the test suite
+### Roadtrip
+  [Mapquest Developer](https://developer.mapquest.com/)
 
-* Services (job queues, cache servers, search engines, etc.)
+  POST '/api/v1/road_trip'
+  (http://localhost:3000/api/v1/road_trip)
 
-* Deployment instructions
+    Params :location and :api_key must be passed in body of request as JSON.
 
-* ...
+### Background Image
+  [Pexels](https://www.pexels.com/api)
+
+  GET '/api/v1/backgrounds'
+  (http://localhost:3000/api/v1/backgrounds?location=hoboken,nj)
+
+### Create User
+  POST '/api/v1/users'
+  (http://localhost:3000/api/v1/users/)
+
+    Params :email, :password, and :password_confirmation must be passed in body of request as  JSON.
+
+### Log in Existing User
+  POST '/api/v1/sessions'
+  (http://localhost:3000/api/v1/sessions/)
+
+    Params :email and :password must be passed in body of request as JSON.
+
+## Setup and Testing
+
+This project utilizes Rails 5.2.6 and Ruby 2.7.2
+
+* Fork this repository
+* Clone your fork
+* From the command line, install gems and set up the users database:
+    * `bundle install`
+    * `rails db:drop db:create db:migrate`
+* Run the test suite with `bundle exec rspec`.
+  * The RSpec test suite can be found in the project's spec directory.
+* Run your development server with `rails s` to see the app in action.
+
+## Contributers
+
+- [Lesley Sanders](https://github.com/lgsriclas)
