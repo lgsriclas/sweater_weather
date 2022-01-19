@@ -1,7 +1,7 @@
 class BreweryService
   class << self
-    def get_brewery(location)
-      response = Faraday.get("https://api.openbrewerydb.org/breweries?by_city=#{city}")
+    def get_breweries(location)
+      response = Faraday.get("https://api.openbrewerydb.org/breweries?by_city=#{location}")
       parse_data(response)
     end
 
