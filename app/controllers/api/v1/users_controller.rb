@@ -1,5 +1,4 @@
 class Api::V1::UsersController < ApplicationController
-
   def create
     user_params[:email] = user_params[:email].downcase
     user = User.new(user_params)
