@@ -12,6 +12,8 @@ RSpec.describe 'Breweries Facade', :vcr do
      expect(breweries.breweries.first[:name]).to eq("Denver Beer Co")
      expect(breweries.breweries.first).to have_key(:brewery_type)
      expect(breweries.breweries.first[:brewery_type]).to eq("micro")
+     expect(breweries.breweries.first).to_not have_key(:city)
+     expect(breweries.breweries.first).to_not have_key(:state)
   end
 
   it 'returns weather data' do
