@@ -11,4 +11,3 @@ class WeatherService
     end
   end
 end
-

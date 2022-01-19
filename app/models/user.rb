@@ -7,7 +7,6 @@ class User < ApplicationRecord
   before_create :api_key
 
   def api_key
-    # SecureRandom.hex(13)
     SecureRandom.base64.tr('+/=', 'Qrt')
   end
 end
